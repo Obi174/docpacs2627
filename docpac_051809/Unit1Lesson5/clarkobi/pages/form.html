@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Forms</title>
+    </head>
+    <body>
+        <h1>Data Collecting</h1>
+        <p>placeholder</p>
+        <form id="projectInterestForm" method="POST" action="/form"></form>
+    <form action="/form" method="POST">
+        <label for="studentName">Name</label>
+        <label for="studentEmail">Email</label>
+        <label for="studentNumber">Student number</label>
+
+        <input type="text" id="studentName" name="studentName">
+        <input type="email" id="studentEmail" name="studentEmail">
+        <input type="number" id="studentNumber" name="studentNumber" min="0" max="9999">
+
+        <fieldset>
+            <legend>Perferred project type</legend>
+        </fieldset>
+
+        <button type="submit">Submit</button>
+    </form>
+    </body>
+</html>
