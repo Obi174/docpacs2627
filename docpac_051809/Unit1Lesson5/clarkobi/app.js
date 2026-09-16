@@ -42,6 +42,12 @@ const server = http.createServer((req, res) => {
         })
         }
     }  
+    if (req.url.startsWith('/query')) {
+        const url = new URL (req.url,'http://localhost:' + process.env.PORT)
+        const message = url.searchParams.get('message')
+        res.writeHead(200, { 'content-type': 'text/plain'})
+        res.end (message)
+    }
 }
 );
 
