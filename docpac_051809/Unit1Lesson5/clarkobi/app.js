@@ -23,8 +23,12 @@ const server = http.createServer((req, res) => {
 
             req.on('end', () => {
                 console.log ('received end')
-                console.log(body)
+                console.log('Raw body:', body)
+                const params = new URLSearchParams(body)
+                console.log('Parsed params', params)
                 res.writeHead(200, { 'Content-Type': 'text/plain' })
+                const user= params.get('username')
+                console.log(user)
                 res.end(body)
             });
         }
