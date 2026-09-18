@@ -26,10 +26,14 @@ const server = http.createServer((req, res) => {
                 console.log('Raw body:', body)
                 const params = new URLSearchParams(body)
                 console.log('Parsed params', params)
-                res.writeHead(200, { 'Content-Type': 'text/plain' })
                 const user= params.get('username')
-                console.log(user)
-                res.end(body)
+                if (!user || user.trim() === "") {
+                    res.writeHead(400,{'Content-Type':'text/plain'})
+                    res.end('Error text submitted is blank')
+                } else {
+                    res.writeHead(200,{'Content-Type':'text/plain'})
+                    res.end(user)
+                }
             });
         }
         if (req.method === 'GET') {
@@ -49,8 +53,13 @@ const server = http.createServer((req, res) => {
     if (req.url.startsWith('/query')) {
         const url = new URL (req.url,'http://localhost:' + process.env.PORT)
         const message = url.searchParams.get('message')
-        res.writeHead(200, { 'content-type': 'text/plain'})
-        res.end (message)
+        if (!message || message.trim() === "") {
+            res.writeHead(400,{'Content-Type':'text/plain'})
+            res.end('Error text submitted is blank')
+        } else {
+            res.writeHead(200,{'Content-Type':'text/plain'})
+            res.end(message)
+        }
     }
 }
 );
