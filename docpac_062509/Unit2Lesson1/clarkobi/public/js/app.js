@@ -11,6 +11,8 @@ const express = require('express')
 const app = express()
 app.use(express.urlencoded({ extended: true }))
 
+app.use(express.static('public'));
+
 app.post('/form',(req,res) => {
     const user = req.body.username
     if (!user || user.trim() === "") {
