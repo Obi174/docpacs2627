@@ -1,3 +1,3 @@
 console.log("hello")
-color=document.getElementsByClassName("color")
-console.log(color)
+test=document.getElementById("test")
+console.log(test)
