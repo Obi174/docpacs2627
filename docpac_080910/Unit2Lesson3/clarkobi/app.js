@@ -7,10 +7,14 @@ const dotenv = require('dotenv');
 dotenv.config()
 const fs = require('fs')
 const path = require('path')
-const express = require('express')
+const express = require('express');
+const { time } = require('console');
+const requestLogger=require('./utils/requestLogger')
 const app = express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'));
+app.use(requestLogger)
+
 
 app.post('/form',(req,res) => {
     const user = req.body.username
@@ -41,3 +45,5 @@ app.listen(process.env.PORT, () => {
     console.log(process.env.PORT)
     console.log('http://localhost:', process.env.PORT)
 });
+
+app.end()

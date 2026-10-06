@@ -1,5 +1,6 @@
 function requestLogger(req,res,next) {
-    let time= TimeRanges
+    let time=Date()
     let method=req.method
     let url=req.url
+    next()
 }
