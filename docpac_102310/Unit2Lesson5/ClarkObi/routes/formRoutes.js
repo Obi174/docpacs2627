@@ -10,7 +10,7 @@ routesForm.post('/form',(req,res) => {
 }); 
 
 routesForm.get('/form',(req,res) => {
-    res.sendFile(path.join(__dirname,'../public/form.html'))
+    res.render('form')
 });
 
 module.exports=routesForm
