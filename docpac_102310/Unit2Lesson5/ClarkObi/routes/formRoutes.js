@@ -6,7 +6,7 @@ routesForm.post('/form',(req,res) => {
     const user = req.body.username
     if (!user || user.trim() === "") {
         res.status(400).send('Error text submitted is blank')
-    } else{res.send(user)}
+    } else{res.render('formResponse',{username:user})}
 }); 
 
 routesForm.get('/form',(req,res) => {
