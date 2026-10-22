@@ -5,7 +5,7 @@ const routesForm = express.Router();
 routesForm.post('/form',(req,res) => {
     const user = req.body.username
     if (!user || user.trim() === "") {
-        res.status(400).send('Error text submitted is blank')
+        res.status(400).render('error',{errorMessage:'Error text submitted is blank'})
     } else{res.render('formResponse',{username:user})}
 }); 
 
