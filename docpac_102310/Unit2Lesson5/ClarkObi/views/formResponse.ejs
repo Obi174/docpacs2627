@@ -1,7 +1,11 @@
 <%-include('partials/header')%>
-<p>Username:<%=username%></p>
-<%-if(username%===rock){console.log('rock')}%>
-<a href="/">Homepage</a>
-<br>
-<a href="/form">Submition form</a>
+<%if(username==='rock'){%>
+    <p>Username:paper u lose</p>
+<%}else{%>
+    <p>Username:<%=username%></p>
+<%}%>
+
+<%urls.forEach(item=>{%>
+    <ul><a href="<%=item.url%>"><%=item.text%></a></ul>
+<%})%>
 <%-include('partials/footer')%>
