@@ -1,8 +1,11 @@
+const PORT = Number(process.env.PORT) || 3000;
 const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
+
+
 const dotenv = require('dotenv');
 dotenv.config();
 const fs = require('fs');
@@ -22,8 +25,7 @@ app.use(routesForm);
 app.use(routesPage);
 app.use(routesParam);
 
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
     console.log(process.env.APP)
-    console.log(process.env.PORT)
-    console.log('http://localhost:', process.env.PORT)
-});
+    console.log('http://localhost:',PORT)
+}).on('error',(err)=>{console.error('Sever failed to start',err.message)});
