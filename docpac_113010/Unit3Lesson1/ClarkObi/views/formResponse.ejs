@@ -4,7 +4,14 @@
 <%}else{%>
     <p>Username:<%=username%></p>
 <%}%>
-
+<h2>Stored Entries</h2>
+<% entries.forEach(entry=>{ %>
+    <ul>
+        Username:<%=entry.username%>
+        Source<%=entry.source%>
+        Created<%=entry.created_at%>
+    </ul>
+<%})%>
 <%urls.forEach(item=>{%>
     <ul><a href="<%=item.url%>"><%=item.text%></a></ul>
 <%})%>
