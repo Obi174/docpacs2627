@@ -11,6 +11,7 @@ const scorebox = document.getElementById("scoreBox")
 const timerBox = document.getElementById("timerBox")
 const directionBox = document.getElementById("directionBox")
 const contollerStatus = document.getElementById("contollerStatus")
+const name= document.getElementById("name")
 setInterval((interval) => {
     if(gameRunning===true){
         if (time > 0) {
