@@ -1,2 +1,3 @@
-const Database = require('better-sqlite3')
-const SQL=require('better-sqlite3')
+const SQL= require('better-sqlite3');
+const db=new SQL('data/scores.db',{verbose:console});
+module.exports=db
