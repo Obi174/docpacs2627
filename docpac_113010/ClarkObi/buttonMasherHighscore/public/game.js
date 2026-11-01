@@ -11,7 +11,33 @@ const scorebox = document.getElementById("scoreBox")
 const timerBox = document.getElementById("timerBox")
 const directionBox = document.getElementById("directionBox")
 const contollerStatus = document.getElementById("contollerStatus")
+const errorMessage = document.getElementById("errorMessage")
 const name= document.getElementById("name")
+function SubmitScore(name, score){
+    const trimmedName=name.trim()
+    if(trimmedName===""){errorMessage.textContent="please enter a valid name"
+        return};
+    if(trimmedName.length>30){errorMessage.textContent="please enter a valid name"
+        return};
+    if(typeof score!=="number"||Number.isNaN(score)){errorMessage.textContent="Invalid score"
+        return};
+    if(Number.isInteger(score)===false){errorMessage.textContent="Invalid score"
+        return};
+    if(score<0){errorMessage.textContent="Invalid score"
+        return};
+    let Value = {Username:trimmedName,Highscore:score};
+    fetch('/api/scores',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(Value)})
+    .then(response=>{
+        return response.json().then(data =>{
+            return {response, data}
+        })})
+    .then(({response,data})=>{
+        errorMessage.textContent=data.message
+    })
+    };
 setInterval((interval) => {
     if(gameRunning===true){
         if (time > 0) {
@@ -19,8 +45,8 @@ setInterval((interval) => {
             time = time - 1
             timerBox.textContent="Time:"+ time
         };
-        if (time === 0) {timerBox.textContent ="GAMEOVER"}
-    }
+        if (time === 0) {timerBox.textContent ="GAMEOVER",
+            SubmitScore(name.value, score)}};
 }, 1000);
 setInterval((interval) => {
     if(gameRunning===true){
