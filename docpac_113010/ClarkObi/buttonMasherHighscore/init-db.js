@@ -1,4 +1,4 @@
-const db= require('data/scores.db', {verbose:console});
+const db= require('./data/scores.db', {verbose:console});
 const scores=`CREATE TABLE IF NOT EXISTS score (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
