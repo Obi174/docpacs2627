@@ -1,0 +1,17 @@
+<%-include('partials/header')%>
+<form action="/register" method="POST">
+
+    <label for="username">Username:</label>
+    <label for="email">Email:</label>
+    <label for="password">Password:</label>
+    <label for="repassword">Confirm Password:</label>
+
+    <input type="text" id="username" name="username" required>
+    <input type="email" id="email" name="email" required>
+    <input type="password" id="password" name="password" required minlength="8">
+    <input type="password" id="repassword" name="repassword" required minlength="8">
+    <button type="submit">Submit</button>
+
+</form>
+<a href="/login">Login Page</a>
+<%-include('partials/footer')%>

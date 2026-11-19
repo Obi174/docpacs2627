@@ -16,4 +16,4 @@ function createUser(username,email){
     const sql=`INSERT INTO users (username,email) VALUES (?,?)`
     const result=db.prepare(sql).run(username,email);
     return result};
-export:modules
+module.exports={findUserById,findUserByEmail,findUserByUsername,createUser} 
