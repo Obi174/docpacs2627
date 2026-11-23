@@ -19,7 +19,14 @@ routesAuthenication.post('/register',(req,res)=>{
     userModel.createUser(username,email)
     res.redirect('/login')});
 routesAuthenication.get('/login',(req,res)=>{});
-routesAuthenication.post('/login',(req,res)=>{});
+routesAuthenication.post('/login',(req,res)=>{
+    const username=req.body.username
+    const email=req.body.email
+    const password=req.body.password
+    const user=userModel.findUserByUsername(username)
+    if(!user){return res.status(400).render('error',{errorMessage:"user doesn't exist"})};
+    if(password!=ae){}
+});
 routesAuthenication.post('/logout',(req,res)=>{});
 routesAuthenication.get('/account',(req,res)=>{});
-module.export=routesAuthenication
+module.export=routesAuthenication;
