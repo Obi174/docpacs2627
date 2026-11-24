@@ -16,17 +16,18 @@ routesAuthenication.post('/register',(req,res)=>{
     if(existingUser){return res.status(400).render('error',{errorMessage:"This username exist already"})};
     const existingEmail=userModel.findUserByEmail(email);
     if(existingEmail){return res.status(400).render('error',{errorMessage:"This email exist already"})};
-    userModel.createUser(username,email)
+    userModel.createUser(username,email,password)
     res.redirect('/login')});
-routesAuthenication.get('/login',(req,res)=>{});
+routesAuthenication.get('/login',(req,res)=>{
+     res.redirect('/account')});
 routesAuthenication.post('/login',(req,res)=>{
-    const username=req.body.username
-    const email=req.body.email
-    const password=req.body.password
-    const user=userModel.findUserByUsername(username)
+    const name=req.body.username
+    const userpassword=req.body.password
+    const user=userModel.findUserByUsername(name)
     if(!user){return res.status(400).render('error',{errorMessage:"user doesn't exist"})};
-    if(password!=ae){}
-});
+    if(userpassword!=password){return res.status(400).render('error',{errorMessage:"Invalid password"})};
+    req.session.userId=user.id;
+    res.redirect('/account')});
 routesAuthenication.post('/logout',(req,res)=>{});
 routesAuthenication.get('/account',(req,res)=>{});
-module.export=routesAuthenication;
+module.exports=routesAuthenication;

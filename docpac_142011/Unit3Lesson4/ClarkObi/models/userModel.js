@@ -13,7 +13,7 @@ function findUserByUsername(username) {
     const result=db.prepare(sql).get(username);
     return result};
 function createUser(username,email){
-    const sql=`INSERT INTO users (username,email) VALUES (?,?)`
-    const result=db.prepare(sql).run(username,email);
+    const sql=`INSERT INTO users (username,email,password) VALUES (?,?)`
+    const result=db.prepare(sql).run(username,email,password);
     return result};
 module.exports={findUserById,findUserByEmail,findUserByUsername,createUser} 
